@@ -1,0 +1,23 @@
+# params.yml
+args:
+  use_dynamic_ports: true # prevent port conflicts with others on the same machine
+  cdk_erigon_node_image: cdk-erigon
+  zkevm_prover_image: hermeznetwork/zkevm-prover:v9.0.0-RC3-fork.13
+  zkevm_contracts_image: local/zkevm-contracts:v8.1.0-rc.2-fork.13 # build locally, see ./docker
+
+  sequencer_type: erigon # default
+  zkevm_use_real_verifier: true
+  erigon_strict_mode: true
+
+  static_ports:
+    cdk_erigon_sequencer_start_port: 8120 # RPC port = 8123
+
+deployment_stages:
+  # we don't need these services in local testing
+  deploy_agglayer: false
+  deploy_cdk_bridge_infra: false
+  deploy_cdk_bridge_ui: false
+  # Second Run only
+  # deploy_l1: false
+  # deploy_zkevm_contracts_on_l1: false
+  # deploy_databases: false
